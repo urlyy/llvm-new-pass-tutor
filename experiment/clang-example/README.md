@@ -7,8 +7,8 @@ c 语言使用 clang，cpp 使用 clang++，我这里全部都用 clang++了
 ## 使用 clang++ 直接编译 cpp 为可执行文件
 
 ```shell
-clang++ clang-test.cpp -o hello
-./hello
+clang++ clang-test.cpp -o hello.exe
+./hello.exe
 ```
 
 ## 先编译为二进制，再运行 bc
@@ -46,7 +46,7 @@ clang -O2 -emit-llvm o-test.c -S -o o2.ll
 clang -O3 -emit-llvm o-test.c -S -o o3.ll
 ```
 
-可以看到 O1 删除了调用死代码的部分，O2 进行了循环转换(参考[indvars: Canonicalize Induction Variables](https://llvm.org/docs/Passes.html#indvars-canonicalize-induction-variables))，O3 基本与 O2 一致
+可以看到 比起 O0,O1 删除了调用死代码的部分，并把 main 函数调用 loop_print 改为将 loop_print 直接内联到了 main 中。比起 O1,O2 进行了循环转换(参考[indvars: Canonicalize Induction Variables](https://llvm.org/docs/Passes.html#indvars-canonicalize-induction-variables))，O3 基本与 O2 一致
 
 # 总结
 

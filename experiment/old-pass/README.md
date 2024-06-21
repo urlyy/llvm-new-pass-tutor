@@ -16,9 +16,9 @@
 # -fPIC用于生成位置无关代码。即生成的机器代码不依赖于它在内存中的具体地址，这对于创建共享库非常重要
 clang++ `llvm-config --cxxflags` -fPIC -shared pass-14-clang.cpp -o Pass14.so `llvm-config --ldflags`
 # 使用 Pass 处理 main.c 对应的IR
-# -Xclang将 `-load ./LLVMHello.so`命令传递给clang
+# -Xclang将 `-load ./LLVMHello.so`命令传递给clang，先编译为目标文件
 clang++ -flegacy-pass-manager -Xclang -load -Xclang ./Pass14.so -c main.c -o main.o
-# 由于引入了一个自定义函数，这个也需要编译
+# 由于引入了一个自定义函数，这个也需要编译为目标文件
 clang -c custom.c -o custom.o
 # 链接，生成最终的可执行文件
 clang main.o custom.o -o main.exe
@@ -47,7 +47,7 @@ opt -load ./Pass14.so -help | grep hello
 clang -emit-llvm main.c -c -o main.bc
 # 根据这个讨论里的第二个发言 https://groups.google.com/g/llvm-dev/c/kQYV9dCAfSg，添加-enable-new-pm=0
 # warning不用管
-opt -enable-new-pm=0  -load ./Pass14.so --hello main.bc
+opt -enable-new-pm=0 -load ./Pass14.so --hello main.bc
 ```
 
 输出

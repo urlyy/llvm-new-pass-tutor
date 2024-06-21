@@ -141,7 +141,7 @@ namespace {
 }
 
 llvm::PassPluginLibraryInfo getDynamicCallCounterPluginInfo() {
-  return {LLVM_PLUGIN_API_VERSION, "dynamic-cc", LLVM_VERSION_STRING,
+  return {LLVM_PLUGIN_API_VERSION, "dynamic", LLVM_VERSION_STRING,
           [](PassBuilder &PB) {
             // 用这个以支持clang使用
             PB.registerPipelineStartEPCallback(

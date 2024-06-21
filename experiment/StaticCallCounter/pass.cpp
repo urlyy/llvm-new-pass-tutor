@@ -44,7 +44,12 @@ namespace {
               }
               // We have a direct function call
               // update the count for the function being called.
-              cout<<DirectInvoc->getName().str()<<"\n";
+              // 打印一下执行call的行数
+              if (DILocation *Loc = I.getDebugLoc()) {
+                  int line = Loc->getLine();
+                  cout<<line<<" "<<DirectInvoc->getName().str()<<"\n";
+              }
+              // cout<<line<<" "<<DirectInvoc->getName().str()<<"\n";
               callCounter[DirectInvoc->getName().str()]++;
             }
           }

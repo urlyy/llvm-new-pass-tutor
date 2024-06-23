@@ -1,9 +1,9 @@
-# 基于 LLVM-18 ，编写并使用 Pass
+# 使用 LLVM-18 ，基于 new pass manager，编写 Pass
 
 # 做这个视频的原因
 
 - 最近在看 AFLGo，涉及到了使用 LLVM 插桩
-- 想自己实现插桩，又不想专门找书和课程，所以把国内外的文档博客 issue 翻了个遍，但还是有些问题找不到解决方案。所以一个原因就是让我这段时间的搜索工作有点意义，减少其他同学花费在搜索上的时间
+- 想自己实现插桩，又不想专门找书和课程，总是碰壁，把国内外的文档博客 issue 翻了个遍，也还是有些问题找不到解决方案。所以一个原因就是让我这段时间的搜索工作有点意义，减少其他同学花费在搜索上的时间
 - 为还在观望的同学做个介绍，展示用法，避掉几个坑，抛砖引玉
 
 # 预先说明
@@ -26,6 +26,7 @@ LLVM 的特点：
 2. 代码模块化设计，易于理解，扩展性强。
 3. 优化阶段针对的是统一的 LLVM IR，不论是支持新的编程语言，还是支持新的硬件设备，都不需要对优化阶段做修改。
 4. [LLVM](https://github.com/llvm/llvm-project?tab=License-1-ov-file) 使用 Apache 许可证，[GCC](https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html) 使用 GPL 许可证。相比之下 LLVM 更宽松。
+
    ![alt text](picture/License.png)
 
 # 为什么使用 Pass
@@ -49,7 +50,6 @@ LLVM 的特点：
   # 打包镜像，时间可能较长
   cd install && sudo docker build -t ubuntu22.04:llvm18 .
   # 启动并进入容器,挂载当前目录到容器内的/app目录，并在退出时删除容器
-  #
   cd .. && sudo docker run -it --rm -v ./:/app ubuntu22.04:llvm18
   ```
 

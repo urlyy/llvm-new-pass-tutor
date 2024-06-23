@@ -16,9 +16,9 @@ clang++ `llvm-config --cxxflags` -fPIC -shared pass.cpp -o pass.so `llvm-config 
 
 ```shell
 clang -emit-llvm -S main.c -o main.ll
-opt -S -load-pass-plugin=./pass.so -passes="dynamic-cc" main.ll -o main.ll
+opt -S -load-pass-plugin=./pass.so -passes="dynamic-cc" main.ll -o new_main.ll
 cat main.ll
-lli ./main.ll
+lli ./new_main.ll
 ```
 
 clang 方式

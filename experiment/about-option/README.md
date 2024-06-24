@@ -51,6 +51,12 @@ urlyy.c
 have waved
 ```
 
+## 打印此次使用到的 pass
+
+```
+opt -load ./pass.so -load-pass-plugin=./pass.so -passes="about-option" -wave-goodbye -urlyy=urlyy.c ./main.ll --print-pipeline-passes
+```
+
 ## 疑惑，这个 pass 没有生效
 
 本人已经在 stackoverflow 上发布了提问：[How to use built-in passes in LLVM-18 with opt?](https://stackoverflow.com/questions/78644693/how-to-use-built-in-passes-in-llvm-18-with-opt)，期望大佬解答

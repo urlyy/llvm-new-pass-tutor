@@ -16,7 +16,7 @@ clang++ `llvm-config --cxxflags` -fPIC -shared pass.cpp -o pass.so `llvm-config 
 
 ```shell
 clang -emit-llvm -S main.c -o main.ll
-opt -S -load-pass-plugin=./pass.so -passes="dynamic-cc" main.ll -o new_main.ll
+opt -S -load-pass-plugin=./pass.so -passes="dynamic-cc" main.ll -o new_main.ll -print-pipeline-passes
 cat main.ll
 lli ./new_main.ll
 ```

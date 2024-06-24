@@ -1,4 +1,8 @@
-# 使用 LLVM-18 ，基于 new pass manager，编写 Pass
+# 基于 LLVM-18 ， 使用 New Pass Manager，编写和使用 Pass
+
+# 相关视频链接
+
+[基于 LLVM-18，使用 New Pass Manager，编写和使用 Pass](https://www.bilibili.com/video/BV1Bf3neVEnN/)
 
 # 做这个视频的原因
 
@@ -90,7 +94,6 @@ LLVM 的特点：
 ## 使用自带的 pass
 
 `opt -print-passes`打印当前可用的 pass。也可在官网查看未及时更新的 pass 列表：[LLVM’s Analysis and Transform Passes](https://llvm.org/docs/Passes.html)
-
 参考 [about-option 文件夹](experiment/about-option/README.md)
 
 ## 使用 cmake
@@ -159,7 +162,6 @@ This is one of the key characteristics of the New Pass Managers - it makes the s
 希望大佬解答
 
 - 在使用内置的[Transform Passes](https://llvm.org/docs/Passes.html#transform-passes)时，IR 并没有经过转换。已发布提问：[How to use built-in passes in LLVM-18 with opt?](https://stackoverflow.com/questions/78644693/how-to-use-built-in-passes-in-llvm-18-with-opt)
-- 不知道新版本 PassManager 怎么查看是否注册成功了。旧版可以`opt -load ./Pass14.so -help | grep hello`
 
 # 推荐资料
 

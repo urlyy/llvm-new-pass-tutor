@@ -1,6 +1,6 @@
 # 介绍
 
-这个例子展示了在未使用 CMakeLists.txt 和 Makefile 的情况下，使用 pass 向 IR 中插入函数。
+这个例子展示了在未使用 CMakeLists.txt 和 Makefile 的情况下，基于 llvm-14, 使用 pass 向 IR 中插入函数。
 
 > 注意这两个例子中，使用的是旧版的 `PassManagerBuilder.h`，其在 llvm-14 中还存在，但在 llvm-18 中已移除。所以本例子仅供参考，不要求一定要跑。主要还是用新版 pass
 

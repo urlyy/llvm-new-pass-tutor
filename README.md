@@ -1,4 +1,4 @@
-# 基于 LLVM-18 ， 使用 New Pass Manager，编写和使用 Pass
+# 基于 LLVM-18，使用 New Pass Manager，编写和使用 Pass
 
 # 相关视频链接
 
@@ -17,7 +17,7 @@
 
 # llvm 与 clang
 
-LLVM 原本全称: low level virtual machine，因为作者原本只想写个虚拟机。但后面即使 LLVM 没成为虚拟机，但名称已经传开了。现在官方也有人如下描述：`The name "LLVM" itself is not an acronym; it is the full name of the project`，即 `LLVM`这个名称本身不是首字母缩略词;，它是项目的全名。
+LLVM 原本全称: low level virtual machine，因为作者原本只想写个虚拟机。但后面即使 LLVM 没成为虚拟机，但名称已经传开了。现在官方有如下描述：`The name "LLVM" itself is not an acronym; it is the full name of the project`，即 `LLVM`这个名称本身不是首字母缩略词，而是项目的全名(与全称切割!🤣)。
 
 LLVM 的结构展示如下。经常有人问到 clang 与 gcc 的区别，可以参考这篇文章: [clang 到底是什么？gcc 和 clang 到底有什么区别？](https://blog.csdn.net/qq_33919450/article/details/130911617)<br>
 下图也可以看到本内容涉及到的核心：Pass，类似一个个`算子`，可以将传入的 IR 进行分析、转换，并输出新 IR。
@@ -48,7 +48,8 @@ LLVM 的特点：
 - 仓库地址：[https://github.com/llvm/llvm-project](https://github.com/llvm/llvm-project)
 - 使用源码编译：[https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm](https://llvm.org/docs/GettingStarted.html#getting-the-source-code-and-building-llvm)。个人认为只有需要 DEBUG 功能时才需要编译源码
 - 使用官方提供的脚本：[https://apt.llvm.org](https://apt.llvm.org/)。注意这种安装方式，似乎所有的可执行文件都会带`-18` 后缀，可以自行添加软链
-- 由于本人已经装了 llvm-14，我这里就使用装了 llvm-18 的 docker 镜像进行演示。具体的安装流程参考[Dockerfile](install/Dockerfile)。打包并运行镜像的流程如下。
+- 我在编写此教程中用到的是Ubuntu 22.04
+- 由于在机器上已经装过了 llvm-14，我在视频中就使用装了 llvm-18 的 docker 镜像进行演示。具体的安装流程参考[Dockerfile](install/Dockerfile)。打包并运行镜像的流程如下。
 
   ```
   # 打包镜像，时间可能较长
